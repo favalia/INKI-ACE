@@ -1,0 +1,104 @@
+/* Inki Ace site: ink on paper, like the game (same look as the Inki Run site). */
+:root {
+  --paper: #f9f9f9;
+  --ink: #212121;
+  --faint: #8a8a8a;
+  --line: #d6d6d6;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #141414; --ink: #efefef; --faint: #8f8f8f; --line: #333; }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.6 var(--mono);
+}
+a { color: inherit; text-underline-offset: 3px; }
+img, video { max-width: 100%; display: block; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+.narrow { max-width: 760px; }
+
+/* Header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 16px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; letter-spacing: 0.2em; }
+.brand img { width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--ink); }
+.top nav { display: flex; gap: 18px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; }
+.top nav a { text-decoration: none; }
+.top nav a:hover { text-decoration: underline; }
+
+/* Ink box, like the in-game tags and captions */
+.tag {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+/* Hero */
+.hero { padding: 40px 16px 28px; text-align: center; }
+.hero h1 { font-size: clamp(40px, 9vw, 88px); line-height: 1; letter-spacing: 0.12em; margin: 18px 0 10px; font-weight: 800; }
+.hero .lede { color: var(--faint); font-size: clamp(15px, 2.4vw, 18px); margin: 0 auto 26px; max-width: 34em; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 3px solid var(--ink); background: var(--ink); color: var(--paper);
+  padding: 12px 22px; font: 800 15px var(--mono); letter-spacing: 0.12em; text-decoration: none;
+}
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn[aria-disabled="true"] { cursor: default; }
+
+.frame { border: 3px solid var(--ink); background: var(--paper); }
+.video { margin: 34px auto 0; aspect-ratio: 1280 / 592; }
+.video video { width: 100%; height: 100%; object-fit: cover; }
+
+/* Sections */
+section { margin-top: 64px; }
+section > h2 { font-size: clamp(22px, 4vw, 30px); letter-spacing: 0.12em; margin: 12px 0 18px; }
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.card { border: 3px solid var(--ink); padding: 16px 18px; }
+.card h3 { margin: 0 0 6px; font-size: 15px; letter-spacing: 0.1em; }
+.card p { margin: 0; color: var(--faint); font-size: 14px; }
+
+.rules { display: grid; gap: 0; border: 3px solid var(--ink); }
+.rule { display: grid; grid-template-columns: minmax(120px, 1fr) 2fr; border-top: 2px solid var(--line); }
+.rule:first-child { border-top: 0; }
+.rule b, .rule span { padding: 12px 16px; }
+.rule b { letter-spacing: 0.08em; font-size: 14px; }
+.rule span { color: var(--faint); font-size: 14px; }
+
+.shots { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.shots img { width: 100%; height: auto; border: 3px solid var(--ink); border-radius: 22px; }
+.hero .phone { width: min(300px, 72vw); margin: 34px auto 0; border: 3px solid var(--ink); border-radius: 30px; }
+
+/* Text pages */
+.page { padding: 24px 16px 40px; }
+.page h1 { font-size: clamp(28px, 6vw, 44px); letter-spacing: 0.1em; margin: 16px 0 6px; }
+.page .meta { color: var(--faint); font-size: 14px; margin: 0 0 28px; }
+.page h2 { font-size: 18px; letter-spacing: 0.08em; margin: 34px 0 8px; }
+.page h3 { font-size: 15px; margin: 22px 0 4px; }
+.page p, .page li { font-size: 15px; }
+.page ul { padding-left: 1.2em; }
+.page li { margin: 4px 0; }
+.note { border: 3px solid var(--ink); padding: 14px 18px; margin: 18px 0; }
+.note p { margin: 4px 0; }
+.mail { font-weight: 800; font-size: 18px; word-break: break-all; }
+
+footer { border-top: 2px solid var(--line); margin-top: 64px; padding: 22px 0 40px; color: var(--faint); font-size: 13px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; }
+footer nav { display: flex; gap: 18px; }
+
+@media (max-width: 520px) {
+  .top nav { gap: 12px; font-size: 13px; }
+  .brand span { display: none; }
+  .rule { grid-template-columns: 1fr; }
+  .rule span { padding-top: 0; }
+}
